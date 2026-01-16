@@ -1,0 +1,17 @@
+# Requirements for the project
+# Generated on 2024-06-27
+
+langchain==0.3.26                 # Orchestration: Main framework for linking LLM components
+langchain-pinecone==0.2.8         # Vector DB: Integration with Pinecone for long-term memory
+langchain-openai==0.3.24          # AI Models: Specifically for OpenAI (GPT-4o, embeddings)
+langchain-community==0.3.26       # Third-party: Contains external integrations (tools, loaders)
+
+flask==3.1.1                      # API/Web: Framework to build the user interface or API endpoints
+
+sentence-transformers==4.1.0      # Local Embeddings: Converts text into math vectors (runs locally)
+
+pypdf==5.6.1                      # PDF Loader: Extracts text from PDF files for processing
+python-dotenv==1.1.0              # Environment Variables: Manages configuration settings securely
+
+
+-e .
