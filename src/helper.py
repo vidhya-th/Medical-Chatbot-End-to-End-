@@ -24,11 +24,22 @@ def filter_to_minimal_docs(docs: List[Document]) -> List[Document]:
     """
     minimal_docs: List[Document] = []
     for doc in docs:
-        src = doc.metadata.get("source")
+        # 1. Start with a base metadata dictionary
+        # Use .get() with a default to avoid errors
+        # Define metadata keys
+        raw_metadata = {
+            "source": doc.metadata.get("source"),
+            "region": doc.metadata.get("region"),
+            "country": doc.metadata.get("country")
+        }
+        # 2. Clean the dictionary: Remove any keys where the value is None
+        # Pinecone only accepts: string, number, boolean, or list of strings
+        clean_metadata = {k: v for k, v in raw_metadata.items() if v is not None}
+
         minimal_docs.append(
             Document(
                 page_content=doc.page_content,
-                metadata={"source": src}
+                metadata=clean_metadata
             )
         )
     return minimal_docs
