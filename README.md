@@ -109,7 +109,7 @@ You should now see the Medical RAG Chatbot running locally
 ├── store_index.py      # Vector DB ingestion script
 └── requirements.txt    # Project dependencies
 ```
-## 🚀 AWS CI/CD Deployment with GitHub Actions
+## AWS CI/CD Deployment with GitHub Actions
 
 This section explains how to deploy the Medical RAG Chatbot on **AWS EC2** using **Docker, Amazon ECR**, and **GitHub Actions (Self-Hosted Runner)**.
 
