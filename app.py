@@ -85,6 +85,9 @@ def chat():
     #Handles user messages and returns the AI response
     msg = request.form["msg"]
     print(f"User Input: {msg}")
+
+    if not msg:
+        return "Please enter a message."
     
     # Process query through the RAG pipeline
     response = rag_chain.invoke({"input": msg})

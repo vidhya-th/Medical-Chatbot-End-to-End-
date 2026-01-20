@@ -126,12 +126,20 @@ This section explains how to deploy the Medical RAG Chatbot on **AWS EC2** using
 - `AmazonEC2FullAccess`
 
 These permissions allow:
-- Pushing Docker images to **ECR**
+- Pushing Docker images to **ECR** 
 - Managing **EC2 instances**
 
 ---
 
-## STEP 02 — Deployment Flow (Overview)
+## STEP 02 — Create Amazon ECR Repository & Create EC2 machine
+
+1. Go to **Amazon ECR** in AWS Console
+2. Create a new repository: , copy URI from the repo created in ecr: 409324389350.dkr.ecr.eu-north-1.amazonaws.com/medical-chatbot
+3. 
+
+
+## STEP 02 — Configure EC2 as self hosted runner
+## Deployment Flow (Overview)
 
 The CI/CD pipeline performs the following steps:
 
@@ -143,17 +151,3 @@ The CI/CD pipeline performs the following steps:
 
 ---
 
-## STEP 03 — Create Amazon ECR Repository
-
-1. Go to **Amazon ECR** in AWS Console
-2. Create a new repository
-
-Example repository URI:
-
-```text
-315865595366.dkr.ecr.us-east-1.amazonaws.com/medicalbot
-```
-
-## Medical Disclaimer
-
-This AI is for informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
