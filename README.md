@@ -135,10 +135,23 @@ These permissions allow:
 
 1. Go to **Amazon ECR** in AWS Console
 2. Create a new repository: , copy URI from the repo created in ecr: 409324389350.dkr.ecr.eu-north-1.amazonaws.com/medical-chatbot
-3. 
+3. Create an **EC2** instance, configure EC2 as self hosted runner Install docker in production server
+
+---
+
+## STEP 03 — Setup github secrets
 
 
-## STEP 02 — Configure EC2 as self hosted runner
+    AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY
+    AWS_DEFAULT_REGION
+    ECR_REPO
+    PINECONE_API_KEY
+    GROQ_API_KEY
+
+---
+
+
 ## Deployment Flow (Overview)
 
 The CI/CD pipeline performs the following steps:
