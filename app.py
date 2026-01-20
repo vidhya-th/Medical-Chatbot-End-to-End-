@@ -9,6 +9,10 @@ from dotenv import load_dotenv
 from src.prompt import *
 import os
 
+#-------------------------------
+from langchain_groq import ChatGroq
+#-------------------------------
+
 # Initialize Flask app
 app = Flask(__name__)
 
@@ -16,11 +20,19 @@ app = Flask(__name__)
 # Load environment variables (API Keys)
 load_dotenv()
 PINECONE_API_KEY = os.environ.get('PINECONE_API_KEY')
-OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+#OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+
+#-------------------------------
+GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
+#-------------------------------
 
 # Inject keys into environment for LangChain components
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+#os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+
+#-------------------------------
+os.environ["GROQ_API_KEY"] = GROQ_API_KEY
+#-------------------------------
 
 # 1. Setup Retrieval Components
 embeddings = download_hugging_face_embeddings()
@@ -36,11 +48,27 @@ docsearch = PineconeVectorStore.from_existing_index(
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
 # 2. Setup Language Model & Chain
-chatModel = ChatOpenAI(model="gpt-4o")
+"""chatModel = ChatOpenAI(model="gpt-4o")
 prompt = ChatPromptTemplate.from_messages([
     ("system", system_prompt), # Loaded from src/prompt.py
     ("human", "{input}"),
+])"""
+
+#-------------------------------
+# Setup Language Model (Llama 3 via Groq)
+chatModel = ChatGroq(
+    groq_api_key=os.environ.get('GROQ_API_KEY'),
+    model_name="llama-3.3-70b-versatile",
+    temperature=0.4
+)
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", system_prompt), 
+    ("human", "{input}"),
 ])
+#-------------------------------
+
+
 
 # Assemble the RAG chain
 question_answer_chain = create_stuff_documents_chain(chatModel, prompt)
