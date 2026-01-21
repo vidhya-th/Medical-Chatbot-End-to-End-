@@ -134,7 +134,7 @@ These permissions allow:
 ## STEP 02 — Create Amazon ECR Repository & Create EC2 machine
 
 1. Go to **Amazon ECR** in AWS Console
-2. Create a new repository: , copy URI from the repo created in ecr: 409324389350.dkr.ecr.eu-north-1.amazonaws.com/medical-chatbot
+2. Create a new repository: , copy URI from the repo created in ecr: 409324389350.dkr.ecr.us-east-1.amazonaws.com/medicalbot
 3. Create an **EC2** instance, configure EC2 as self hosted runner Install docker in production server
 
 ---
